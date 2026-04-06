@@ -12,16 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Demo">
         <activity
-            android:name=".GioHangActivity"
+            android:name=".ui.GioHangActivity"
             android:exported="false" />
         <activity
-            android:name=".ChaoActivity"
+            android:name=".ui.ChaoActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
