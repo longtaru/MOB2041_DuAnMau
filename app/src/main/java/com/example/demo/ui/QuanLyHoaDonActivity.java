@@ -1,0 +1,73 @@
+package com.example.demo.ui;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.example.demo.R;
+import com.example.demo.adapter.HoaDonAdapter;
+import com.example.demo.database.DatabaseHelper;
+import com.example.demo.dto.HoaDonDto;
+
+import java.util.List;
+import java.util.Objects;
+
+public class QuanLyHoaDonActivity extends AppCompatActivity implements HoaDonAdapter.OnHoaDonClickListener {
+
+    private HoaDonAdapter hoaDonAdapter;
+    private List<HoaDonDto> danhSachHoaDon;
+    private DatabaseHelper db;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_quan_ly_hoa_don);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);       //
+        ListView lvHoaDon = findViewById(R.id.lvHoaDon);
+
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Quáº£n lĂ½ hĂ³a Ä‘Æ¡n");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        db = new DatabaseHelper(this);
+
+        // Láº¥y danh sĂ¡ch hĂ³a Ä‘Æ¡n tá»« SQLite
+        danhSachHoaDon = db.layDanhSachHoaDon();
+        hoaDonAdapter = new HoaDonAdapter(this, danhSachHoaDon);
+        hoaDonAdapter.setOnHoaDonClickListener(this);
+        lvHoaDon.setAdapter(hoaDonAdapter);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
+
+    @Override
+    public void onDeleteHoaDon(HoaDonDto hoaDon) {
+        DatabaseHelper db = new DatabaseHelper(this);
+        boolean isDeleted = db.xoaHoaDon(hoaDon.getMaHoaDon());
+        if (isDeleted) {
+            danhSachHoaDon.remove(hoaDon);
+            hoaDonAdapter.notifyDataSetChanged();
+            Toast.makeText(this, "XoĂ¡ hĂ³a Ä‘Æ¡n thĂ nh cĂ´ng", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "XoĂ¡ hĂ³a Ä‘Æ¡n tháº¥t báº¡i", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onOpenHDCT(HoaDonDto hoaDon) {
+        Intent i = new Intent(this, HDCTActivity.class);
+        i.putExtra("maHoaDon", hoaDon.getMaHoaDon());
+        startActivity(i);
+    }
+}
+
+
