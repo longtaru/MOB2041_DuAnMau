@@ -31,12 +31,12 @@ public class QuanLyHoaDonActivity extends AppCompatActivity implements HoaDonAda
         setSupportActionBar(toolbar);       //
         ListView lvHoaDon = findViewById(R.id.lvHoaDon);
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Quáº£n lĂ½ hĂ³a Ä‘Æ¡n");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Quản lý hóa đơn");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         db = new DatabaseHelper(this);
 
-        // Láº¥y danh sĂ¡ch hĂ³a Ä‘Æ¡n tá»« SQLite
+        // Lấy danh sách hóa đơn từ SQLite
         danhSachHoaDon = db.layDanhSachHoaDon();
         hoaDonAdapter = new HoaDonAdapter(this, danhSachHoaDon);
         hoaDonAdapter.setOnHoaDonClickListener(this);
@@ -56,9 +56,9 @@ public class QuanLyHoaDonActivity extends AppCompatActivity implements HoaDonAda
         if (isDeleted) {
             danhSachHoaDon.remove(hoaDon);
             hoaDonAdapter.notifyDataSetChanged();
-            Toast.makeText(this, "XoĂ¡ hĂ³a Ä‘Æ¡n thĂ nh cĂ´ng", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Xoá hóa đơn thành công", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "XoĂ¡ hĂ³a Ä‘Æ¡n tháº¥t báº¡i", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Xoá hóa đơn thất bại", Toast.LENGTH_SHORT).show();
         }
     }
 

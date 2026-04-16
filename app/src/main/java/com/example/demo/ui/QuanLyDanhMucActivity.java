@@ -23,7 +23,7 @@ public class QuanLyDanhMucActivity extends AppCompatActivity implements DanhMucA
     private List<DanhMuc> danhSachDanhMuc;
     private DatabaseHelper db;
 
-    //quay vá» mĂ n hĂ¬nh trÆ°á»›c
+    //quay về màn hình trước
     @Override
     public boolean onSupportNavigateUp() {
         finish();
@@ -39,7 +39,7 @@ public class QuanLyDanhMucActivity extends AppCompatActivity implements DanhMucA
         setSupportActionBar(toolbar);
         ListView lvDanhMuc = findViewById(R.id.lvSanPham);
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Quáº£n lĂ½ danh má»¥c");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Quản lý danh mục");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         db = new DatabaseHelper(this);
@@ -81,11 +81,9 @@ public class QuanLyDanhMucActivity extends AppCompatActivity implements DanhMucA
         if (isDeleted) {
             danhSachDanhMuc.remove(danhMuc);
             danhMucAdapter.notifyDataSetChanged();
-            Toast.makeText(this, "XoĂ¡ danh má»¥c thĂ nh cĂ´ng", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Xoá danh mục thành công", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "XoĂ¡ danh má»¥c tháº¥t báº¡i", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Xoá danh mục thất bại", Toast.LENGTH_SHORT).show();
         }
     }
 }
-
-

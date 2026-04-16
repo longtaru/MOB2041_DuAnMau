@@ -41,7 +41,7 @@ public class QuanLySanPhamActivity extends AppCompatActivity implements SanPhamA
     RelativeLayout itemCart;
     GioHang gioHang;
 
-    //quay vá» mĂ n hĂ¬nh trÆ°á»›c
+    //quay về màn hình trước
     @Override
     public boolean onSupportNavigateUp() {
         finish();
@@ -61,13 +61,13 @@ public class QuanLySanPhamActivity extends AppCompatActivity implements SanPhamA
         tvSoLuong = findViewById(R.id.tvSoLuong);
         itemCart = findViewById(R.id.itemCart);
         gioHang = Common.getGioHang();
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Quáº£n lĂ½ sáº£n pháº©m");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Quản lý sản phẩm");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         db = new DatabaseHelper(this);
         FloatingActionButton fabAddProduct = findViewById(R.id.fabThemDanhMuc);
 
-        // Láº¥y danh sĂ¡ch sáº£n pháº©m tá»« SQLite
+        // Lấy danh sách sản phẩm từ SQLite
         danhSachSanPham = db.timKiemSanPham("");
         sanPhamAdapter = new SanPhamAdapter(this, danhSachSanPham);
         sanPhamAdapter.setOnSanPhamClickListener(this);
@@ -113,7 +113,7 @@ public class QuanLySanPhamActivity extends AppCompatActivity implements SanPhamA
 
     private void capNhatDanhSachSanPham() {
         danhSachSanPham.clear();
-        danhSachSanPham.addAll(db.timKiemSanPham("")); // Láº¥y dá»¯ liá»‡u má»›i tá»« SQLite
+        danhSachSanPham.addAll(db.timKiemSanPham("")); // Lấy dữ liệu mới từ SQLite
         sanPhamAdapter.notifyDataSetChanged();
     }
 
@@ -122,18 +122,18 @@ public class QuanLySanPhamActivity extends AppCompatActivity implements SanPhamA
         gioHang.addSanPham(sanPham);
         tvSoLuong.setText(String.valueOf(gioHang.getDanhSachGioHang().size()));
 
-        // Gá»i hĂ m thá»±c hiá»‡n hiá»‡u á»©ng animation
+        // Gọi hàm thực hiện hiệu ứng animation
         animateAddToCart(iconGioHangItem, itemCart);
     }
 
     private void animateAddToCart(View startView, View cartIcon) {
-        // Láº¥y vá»‹ trĂ­ cá»§a icon giá» hĂ ng vĂ  sáº£n pháº©m
+        // Lấy vị trí của icon giỏ hàng và sản phẩm
         int[] startLoc = new int[2];
         int[] endLoc = new int[2];
         startView.getLocationOnScreen(startLoc);
         cartIcon.getLocationOnScreen(endLoc);
 
-        // Táº¡o ImageView giáº£ láº­p sáº£n pháº©m
+        // Tạo ImageView giả lập sản phẩm
         ImageView animView = new ImageView(this);
         animView.setImageDrawable(((ImageView) startView).getDrawable());
 
@@ -144,26 +144,26 @@ public class QuanLySanPhamActivity extends AppCompatActivity implements SanPhamA
         params.topMargin = startLoc[1];
         rootLayout.addView(animView, params);
 
-        // Táº¡o Animation phĂ³ng to ban Ä‘áº§u
+        // Tạo Animation phóng to ban đầu
         ObjectAnimator scaleUpX = ObjectAnimator.ofFloat(animView, "scaleX", 1f, 5f);
         ObjectAnimator scaleUpY = ObjectAnimator.ofFloat(animView, "scaleY", 1f, 5f);
         AnimatorSet scaleUpSet = new AnimatorSet();
         scaleUpSet.playTogether(scaleUpX, scaleUpY);
         scaleUpSet.setDuration(300);
 
-        // Táº¡o Animation di chuyá»ƒn vĂ o giá» hĂ ng + thu nhá» láº¡i
+        // Tạo Animation di chuyển vào giỏ hàng + thu nhỏ lại
         ObjectAnimator translateX = ObjectAnimator.ofFloat(animView, "translationX", endLoc[0] - startLoc[0]);
         ObjectAnimator translateY = ObjectAnimator.ofFloat(animView, "translationY", endLoc[1] - startLoc[1]);
         ObjectAnimator scaleDownX = ObjectAnimator.ofFloat(animView, "scaleX", 5f, 0.2f);
         ObjectAnimator scaleDownY = ObjectAnimator.ofFloat(animView, "scaleY", 5f, 0.2f);
         ObjectAnimator alpha = ObjectAnimator.ofFloat(animView, "alpha", 1f, 0f);
 
-        // Gom hiá»‡u á»©ng phĂ³ng to + di chuyá»ƒn thĂ nh chuá»—i animation
+        // Gom hiệu ứng phóng to + di chuyển thành chuỗi animation
         AnimatorSet moveToCartSet = new AnimatorSet();
         moveToCartSet.playTogether(translateX, translateY, scaleDownX, scaleDownY, alpha);
         moveToCartSet.setDuration(500);
 
-        // Cháº¡y phĂ³ng to trÆ°á»›c, sau Ä‘Ă³ má»›i di chuyá»ƒn
+        // Chạy phóng to trước, sau đó mới di chuyển
         AnimatorSet finalSet = new AnimatorSet();
         finalSet.playSequentially(scaleUpSet, moveToCartSet);
         finalSet.addListener(new AnimatorListenerAdapter() {
@@ -192,11 +192,10 @@ public class QuanLySanPhamActivity extends AppCompatActivity implements SanPhamA
         if (isDeleted) {
             danhSachSanPham.remove(sanPham);
             sanPhamAdapter.notifyDataSetChanged();
-            Toast.makeText(this, "XoĂ¡ sáº£n pháº©m thĂ nh cĂ´ng", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Xoá sản phẩm thành công", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "XoĂ¡ sáº£n pháº©m tháº¥t báº¡i", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Xoá sản phẩm thất bại", Toast.LENGTH_SHORT).show();
         }
     }
 }
-
 

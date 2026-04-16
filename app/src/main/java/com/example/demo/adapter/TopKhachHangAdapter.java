@@ -66,10 +66,10 @@ public class TopKhachHangAdapter extends BaseAdapter {
         TopKhachHang topKhachHang = topKhachHangList.get(position);
         holder.txtCustomerName.setText(topKhachHang.getTenKhachHang());
 
-        // Äá»‹nh dáº¡ng tiá»n tá»‡
+        // Định dạng tiền tệ
         NumberFormat currencyFormat = NumberFormat.getInstance(Locale.US);
         holder.txtCustomerName.setText(topKhachHang.getTenKhachHang());
-        holder.txtTotalSpent.setText("Tá»•ng chi tiĂªu: " + currencyFormat.format(topKhachHang.getTongChiTieu()) + "VNÄ");
+        holder.txtTotalSpent.setText("Tổng chi tiêu: " + currencyFormat.format(topKhachHang.getTongChiTieu()) + "VNĐ");
         return convertView;
     }
 

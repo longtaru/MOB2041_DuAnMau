@@ -23,7 +23,7 @@ public class QuanLyNhanVienActivity extends AppCompatActivity implements NhanVie
     private List<NhanVien> danhSachNhanVien;
     private DatabaseHelper db;
 
-    //quay vá» mĂ n hĂ¬nh trÆ°á»›c
+    //quay về màn hình trước
     @Override
     public boolean onSupportNavigateUp() {
         finish();
@@ -39,7 +39,7 @@ public class QuanLyNhanVienActivity extends AppCompatActivity implements NhanVie
         setSupportActionBar(toolbar);
         ListView lvNhanVien = findViewById(R.id.lvNhanVien);
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Quáº£n lĂ½ nhĂ¢n viĂªn");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Quản lý nhân viên");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         db = new DatabaseHelper(this);
@@ -81,9 +81,9 @@ public class QuanLyNhanVienActivity extends AppCompatActivity implements NhanVie
         if (isDeleted) {
             danhSachNhanVien.remove(nhanVien);
             nhanVienAdapter.notifyDataSetChanged();
-            Toast.makeText(this, "XoĂ¡ nhĂ¢n viĂªn thĂ nh cĂ´ng", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Xoá nhân viên thành công", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "XoĂ¡ nhĂ¢n viĂªn tháº¥t báº¡i", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Xoá nhân viên thất bại", Toast.LENGTH_SHORT).show();
         }
     }
 }

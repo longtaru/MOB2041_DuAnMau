@@ -36,7 +36,7 @@ public class HDCTAdapter extends BaseAdapter {
         HoaDonChiTietDto hdct = gioHangItem.get(position);
         holder.tvTenSanPham.setText(hdct.getTenSanPham());
         holder.tvGiaSanPham.setText(currencyFormat.format(hdct.getDonGia()));
-        holder.tvSoLuong.setText("Sá»‘ lÆ°á»£ng: " + hdct.getSoLuong());
+        holder.tvSoLuong.setText("Số lượng: " + hdct.getSoLuong());
 
         return convertView;
     }
@@ -45,7 +45,7 @@ public class HDCTAdapter extends BaseAdapter {
         this.context = context;
         this.gioHangItem = gioHangItem;
 
-        // Äá»‹nh dáº¡ng tiá»n tá»‡ cho Viá»‡t Nam (VND)
+        // Định dạng tiền tệ cho Việt Nam (VND)
         currencyFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
     }
 
@@ -70,4 +70,3 @@ public class HDCTAdapter extends BaseAdapter {
         TextView tvSoLuong;
     }
 }
-

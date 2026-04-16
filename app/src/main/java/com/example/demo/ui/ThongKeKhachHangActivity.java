@@ -36,7 +36,7 @@ public class ThongKeKhachHangActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Thá»‘ng kĂª khĂ¡ch hĂ ng");
+        getSupportActionBar().setTitle("Thống kê khách hàng");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         dbHelper = new DatabaseHelper(this);
 
@@ -55,7 +55,7 @@ public class ThongKeKhachHangActivity extends AppCompatActivity {
                 if (edtNgayBatDau.getText().toString().isEmpty()
                         || edtNgayKetThuc.getText().toString().isEmpty()
                         || edtSoLuong.getText().toString().isEmpty()) {
-                    tvTopKhachHang.setText("Vui lĂ²ng nháº­p Ä‘áº§y Ä‘á»§ thĂ´ng tin.");
+                    tvTopKhachHang.setText("Vui lòng nhập đầy đủ thông tin.");
                     tvTopKhachHang.setVisibility(View.VISIBLE);
                     listViewKhachHang.setVisibility(GONE);
                     return;
@@ -81,7 +81,7 @@ public class ThongKeKhachHangActivity extends AppCompatActivity {
             TopKhachHangAdapter adapter = new TopKhachHangAdapter(this, topKhachHangList);
             listViewKhachHang.setAdapter(adapter);
         } else {
-            Toast.makeText(this, "KhĂ´ng cĂ³ dá»¯ liá»‡u khĂ¡ch hĂ ng!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Không có dữ liệu khách hàng!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -104,4 +104,3 @@ public class ThongKeKhachHangActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 }
-

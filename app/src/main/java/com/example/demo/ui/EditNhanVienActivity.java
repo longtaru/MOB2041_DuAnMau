@@ -46,8 +46,8 @@ public class EditNhanVienActivity extends AppCompatActivity {
         spChucVu = findViewById(R.id.spChucVu);
 
         chucVuList = new ArrayList<>();
-        chucVuList.add(new ChucVu(0, "NhĂ¢n viĂªn"));
-        chucVuList.add(new ChucVu(1, "Quáº£n lĂ½"));
+        chucVuList.add(new ChucVu(0, "Nhân viên"));
+        chucVuList.add(new ChucVu(1, "Quản lý"));
         ArrayAdapter<ChucVu> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, chucVuList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spChucVu.setAdapter(adapter);
@@ -81,7 +81,7 @@ public class EditNhanVienActivity extends AppCompatActivity {
         String tenNhanVien = edtTenNhanVien.getText().toString().trim();
         String diaChi = edtDiaChi.getText().toString().trim();
         int chucVu = ((ChucVu)spChucVu.getSelectedItem()).getChucVuCode();
-        double luong = Double.parseDouble(edtLuong.getText().toString().replaceAll("[^\\d]", "").trim());  // chá»‰ giá»¯ láº¡i sá»‘, bá» dáº¥u cháº¥m
+        double luong = Double.parseDouble(edtLuong.getText().toString().replaceAll("[^\\d]", "").trim());  // chỉ giữ lại số, bỏ dấu chấm
         String matKhau = edtMatKhau.getText().toString().trim();
 
         boolean isOK;
@@ -94,9 +94,9 @@ public class EditNhanVienActivity extends AppCompatActivity {
             isOK = db.themNhanVien(nhanVien);
         }
         if (isOK) {
-            Toast.makeText(this, (type == 0)? "Cáº­p nháº­t": "ThĂªm" + " nhĂ¢n viĂªn thĂ nh cĂ´ng", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, (type == 0)? "Cập nhật": "Thêm" + " nhân viên thành công", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, (type == 0)? "Cáº­p nháº­t": "ThĂªm" + " nhĂ¢n viĂªn tháº¥t báº¡i", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, (type == 0)? "Cập nhật": "Thêm" + " nhân viên thất bại", Toast.LENGTH_SHORT).show();
         }
         finish();
     }

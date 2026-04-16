@@ -102,9 +102,9 @@ public class EditSanPhamActivity extends AppCompatActivity {
             isOK = db.themSanPham(sanPham);
         }
         if (isOK) {
-            Toast.makeText(this, (type == 0)? "Cáº­p nháº­t": "ThĂªm" + " sáº£n pháº©m thĂ nh cĂ´ng", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, (type == 0)? "Cập nhật": "Thêm" + " sản phẩm thành công", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, (type == 0)? "Cáº­p nháº­t": "ThĂªm" + " tháº¥t báº¡i", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, (type == 0)? "Cập nhật": "Thêm" + " thất bại", Toast.LENGTH_SHORT).show();
         }
         finish();
     }

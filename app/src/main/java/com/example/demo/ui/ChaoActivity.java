@@ -17,7 +17,7 @@ public class ChaoActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_chao);
 
-        // Chuyá»ƒn sang mĂ n hĂ¬nh Ä‘Äƒng nháº­p sau 1.5 giĂ¢y
+        // Chuyển sang màn hình đăng nhập sau 1.5 giây
         new Handler().postDelayed(() -> {
             Intent intent = new Intent(ChaoActivity.this, LoginActivity.class);
             startActivity(intent);

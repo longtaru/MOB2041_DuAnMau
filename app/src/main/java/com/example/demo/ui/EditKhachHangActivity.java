@@ -63,9 +63,9 @@ public class EditKhachHangActivity extends AppCompatActivity {
             isOK = db.themKhachHang(khachHang);
         }
         if (isOK) {
-            Toast.makeText(this, (type == 0)? "Cáº­p nháº­t": "ThĂªm" + " khĂ¡ch hĂ ng thĂ nh cĂ´ng", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, (type == 0)? "Cập nhật": "Thêm" + " khách hàng thành công", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, (type == 0)? "Cáº­p nháº­t": "ThĂªm" + " khĂ¡ch hĂ ng tháº¥t báº¡i", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, (type == 0)? "Cập nhật": "Thêm" + " khách hàng thất bại", Toast.LENGTH_SHORT).show();
         }
         finish();
     }

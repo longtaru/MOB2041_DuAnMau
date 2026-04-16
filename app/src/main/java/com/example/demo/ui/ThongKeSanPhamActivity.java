@@ -34,7 +34,7 @@ public class ThongKeSanPhamActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Thá»‘ng kĂª sáº£n pháº©m");
+        getSupportActionBar().setTitle("Thống kê sản phẩm");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         dbHelper = new DatabaseHelper(this);
 
@@ -50,7 +50,7 @@ public class ThongKeSanPhamActivity extends AppCompatActivity {
             if (edtNgayBatDau.getText().toString().isEmpty()
                     || edtNgayKetThuc.getText().toString().isEmpty()
                     || edtSoLuong.getText().toString().isEmpty()) {
-                tvTopSanPham.setText("Vui lĂ²ng nháº­p Ä‘áº§y Ä‘á»§ thĂ´ng tin.");
+                tvTopSanPham.setText("Vui lòng nhập đầy đủ thông tin.");
                 tvTopSanPham.setVisibility(View.VISIBLE);
                 listViewSanPham.setVisibility(GONE);
                 return;
@@ -75,7 +75,7 @@ public class ThongKeSanPhamActivity extends AppCompatActivity {
             TopSanPhamAdapter adapter = new TopSanPhamAdapter(this, topSanPhamList);
             listViewSanPham.setAdapter(adapter);
         } else {
-            Toast.makeText(this, "KhĂ´ng cĂ³ dá»¯ liá»‡u sáº£n pháº©m!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Không có dữ liệu sản phẩm!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -99,4 +99,3 @@ public class ThongKeSanPhamActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 }
-

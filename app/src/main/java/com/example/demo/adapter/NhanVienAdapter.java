@@ -74,7 +74,7 @@ public class NhanVienAdapter extends BaseAdapter {
         holder.tvTenNhanVien.setText(nhanVien.getTenNhanVien());
         holder.tvDiaChi.setText(nhanVien.getDiaChi());
         holder.tvLuong.setText(currencyFormat.format(nhanVien.getLuong()));
-        holder.tvChucVu.setText(nhanVien.getChucVu() == 0 ? "NhĂ¢n viĂªn" : "Quáº£n lĂ½");
+        holder.tvChucVu.setText(nhanVien.getChucVu() == 0 ? "Nhân viên" : "Quản lý");
         holder.imgSuaNhanVien.setOnClickListener(v -> onNhanVienClickListener.onEditNhanVien(nhanVien));
         holder.imgXoaNhanVien.setOnClickListener(v -> onNhanVienClickListener.onDeleteNhanVien(nhanVien));
 
@@ -92,4 +92,3 @@ public class NhanVienAdapter extends BaseAdapter {
         ImageView imgXoaNhanVien;
     }
 }
-

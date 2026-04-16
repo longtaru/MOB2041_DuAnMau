@@ -25,7 +25,7 @@ public class ThongKeDoanhThuActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Thá»‘ng kĂª doanh thu");
+        getSupportActionBar().setTitle("Thống kê doanh thu");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         databaseHelper = new DatabaseHelper(this);
 
@@ -39,7 +39,7 @@ public class ThongKeDoanhThuActivity extends AppCompatActivity {
             String ngayBatDau = edtNgayBatDau.getText().toString().trim();
             String ngayKetThuc = edtNgayKetThuc.getText().toString().trim();
             if (ngayBatDau.isEmpty() || ngayKetThuc.isEmpty()) {
-                tvDoanhThu.setText("Vui lĂ²ng nháº­p Ä‘áº§y Ä‘á»§ ngĂ y báº¯t Ä‘áº§u vĂ  ngĂ y káº¿t thĂºc.");
+                tvDoanhThu.setText("Vui lòng nhập đầy đủ ngày bắt đầu và ngày kết thúc.");
                 return;
             }
 
@@ -74,4 +74,3 @@ public class ThongKeDoanhThuActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 }
-

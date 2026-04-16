@@ -54,9 +54,9 @@ public class EditDanhMucActivity extends AppCompatActivity {
             isOK = db.themDanhMuc(danhMuc);
         }
         if (isOK) {
-            Toast.makeText(this, (type == 0)? "Cáº­p nháº­t": "ThĂªm" + " danh má»¥c thĂ nh cĂ´ng", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, (type == 0)? "Cập nhật": "Thêm" + " danh mục thành công", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, (type == 0)? "Cáº­p nháº­t": "ThĂªm" + " danh má»¥c tháº¥t báº¡i", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, (type == 0)? "Cập nhật": "Thêm" + " danh mục thất bại", Toast.LENGTH_SHORT).show();
         }
         finish();
     }

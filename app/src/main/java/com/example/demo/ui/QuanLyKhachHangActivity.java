@@ -23,7 +23,7 @@ public class QuanLyKhachHangActivity extends AppCompatActivity implements KhachH
     private List<KhachHang> danhSachKhachHang;
     private DatabaseHelper db;
 
-    //quay vá» mĂ n hĂ¬nh trÆ°á»›c
+    //quay về màn hình trước
     @Override
     public boolean onSupportNavigateUp() {
         finish();
@@ -39,7 +39,7 @@ public class QuanLyKhachHangActivity extends AppCompatActivity implements KhachH
         setSupportActionBar(toolbar);
         ListView lvKhachHang = findViewById(R.id.lvKhachHang);
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Quáº£n lĂ½ khĂ¡ch hĂ ng");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Quản lý khách hàng");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         db = new DatabaseHelper(this);
@@ -81,11 +81,10 @@ public class QuanLyKhachHangActivity extends AppCompatActivity implements KhachH
         if (isDeleted) {
             danhSachKhachHang.remove(khachHang);
             khachHangAdapter.notifyDataSetChanged();
-            Toast.makeText(this, "XoĂ¡ khĂ¡ch hĂ ng thĂ nh cĂ´ng", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Xoá khách hàng thành công", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "XoĂ¡ khĂ¡ch hĂ ng tháº¥t báº¡i", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Xoá khách hàng thất bại", Toast.LENGTH_SHORT).show();
         }
     }
 }
-
 

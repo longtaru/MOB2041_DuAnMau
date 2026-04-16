@@ -71,7 +71,7 @@ public class SanPhamAdapter extends BaseAdapter {
         SanPham sp = danhSachSanPham.get(position);
         holder.tvTenSanPham.setText(sp.getTenSanPham());
         holder.tvGiaSanPham.setText(currencyFormat.format(sp.getGiaSanPham()));
-        holder.tvSoLuongTonKho.setText("Tá»“n kho: " + sp.getSoLuong());
+        holder.tvSoLuongTonKho.setText("Tồn kho: " + sp.getSoLuong());
         holder.imgGioHang.setOnClickListener(v -> onSanPhamClickListener.onAddToCartSanPham(sp, holder.imgGioHang));
         holder.imgSuaSanPham.setOnClickListener(v -> onSanPhamClickListener.onEditSanPham(sp));
         holder.imgXoaSanPham.setOnClickListener(v -> onSanPhamClickListener.onDeleteSanPham(sp));
@@ -89,4 +89,3 @@ public class SanPhamAdapter extends BaseAdapter {
         ImageView imgXoaSanPham;
     }
 }
-

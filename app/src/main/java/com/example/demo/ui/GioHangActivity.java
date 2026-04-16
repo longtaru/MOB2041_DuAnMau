@@ -56,7 +56,7 @@ public class GioHangActivity extends AppCompatActivity implements GioHangAdapter
         adapter.setDropDownViewResource(R.layout.spinner_item);
         spKhachHang.setAdapter(adapter);
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Giá» hĂ ng");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Giỏ hàng");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         db = new DatabaseHelper(this);
@@ -65,7 +65,7 @@ public class GioHangActivity extends AppCompatActivity implements GioHangAdapter
         gioHangAdapter.setOnSanPhamClickListener(this);
         lvSanPham.setAdapter(gioHangAdapter);
 
-        // Äá»‹nh dáº¡ng tiá»n tá»‡ cho Viá»‡t Nam (VND)
+        // Định dạng tiền tệ cho Việt Nam (VND)
         currencyFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
         updateTongTien();
 
@@ -84,7 +84,7 @@ public class GioHangActivity extends AppCompatActivity implements GioHangAdapter
                 SanPham sanPham = item.getSanPham();
                 db.themHDCT(new HoaDonChiTiet(maHDCT, maHoaDon, sanPham.getMaSanPham(), item.getSoLuong(), sanPham.getGiaSanPham()));
             }
-            Toast.makeText(this, "Thanh toĂ¡n thĂ nh cĂ´ng", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Thanh toán thành công", Toast.LENGTH_LONG).show();
             Common.getGioHang().getDanhSachGioHang().clear();
             finish();
         });
@@ -101,7 +101,7 @@ public class GioHangActivity extends AppCompatActivity implements GioHangAdapter
         for (GioHangItem item : Common.getGioHang().getDanhSachGioHang()) {
             tongTien += item.getSanPham().getGiaSanPham() * item.getSoLuong();
         }
-        tvTongTien.setText("Tá»•ng tiá»n: " + currencyFormat.format(tongTien));
+        tvTongTien.setText("Tổng tiền: " + currencyFormat.format(tongTien));
     }
 
     @Override
@@ -125,10 +125,9 @@ public class GioHangActivity extends AppCompatActivity implements GioHangAdapter
             gioHangAdapter.notifyDataSetChanged();
             updateTongTien();
         } else {
-            Toast.makeText(this, "Sá»‘ lÆ°á»£ng Ä‘ang lĂ  1",
+            Toast.makeText(this, "Số lượng đang là 1",
                     Toast.LENGTH_LONG).show();
         }
     }
 }
-
 

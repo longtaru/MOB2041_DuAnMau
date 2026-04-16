@@ -32,12 +32,12 @@ public class DoiMatKhauActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Äá»•i máº­t kháº©u");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Đổi mật khẩu");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         db = new DatabaseHelper(this);
 
-        // Láº¥y mĂ£ nhĂ¢n viĂªn tá»« Intent Ä‘á»ƒ biáº¿t nhĂ¢n viĂªn nĂ o Ä‘ang Ä‘Äƒng nháº­p
+        // Lấy mã nhân viên từ Intent để biết nhân viên nào đang đăng nhập
 
         btnLuu.setOnClickListener(v -> doiMatKhau());
         btnHuy.setOnClickListener(v -> {
@@ -58,28 +58,28 @@ public class DoiMatKhauActivity extends AppCompatActivity {
         String matKhauMoi = edtMatKhauMoi.getText().toString().trim();
         String nhapLaiMatKhauMoi = edtNhapLaiMatKhauMoi.getText().toString().trim();
 
-        // Kiá»ƒm tra khĂ´ng Ä‘Æ°á»£c bá» trá»‘ng
+        // Kiểm tra không được bỏ trống
         if (matKhauCu.isEmpty() || matKhauMoi.isEmpty() || nhapLaiMatKhauMoi.isEmpty()) {
-            Toast.makeText(this, "Vui lĂ²ng nháº­p Ä‘áº§y Ä‘á»§ thĂ´ng tin", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             return;
         }
-        // Kiá»ƒm tra máº­t kháº©u cÅ© cĂ³ Ä‘Ăºng khĂ´ng
+        // Kiểm tra mật khẩu cũ có đúng không
         if (!db.kiemTraMatKhauCu(Common.maNhanVien, matKhauCu)) {
-            Toast.makeText(this, "Máº­t kháº©u cÅ© khĂ´ng chĂ­nh xĂ¡c!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Mật khẩu cũ không chính xác!", Toast.LENGTH_SHORT).show();
             return;
         }
-        // Kiá»ƒm tra máº­t kháº©u má»›i vĂ  xĂ¡c nháº­n pháº£i giá»‘ng nhau
+        // Kiểm tra mật khẩu mới và xác nhận phải giống nhau
         if (!matKhauMoi.equals(nhapLaiMatKhauMoi)) {
-            Toast.makeText(this, "Máº­t kháº©u má»›i khĂ´ng khá»›p!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Mật khẩu mới không khớp!", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Náº¿u Ä‘Ăºng, tiáº¿n hĂ nh cáº­p nháº­t máº­t kháº©u má»›i vĂ o SQLite
+        // Nếu đúng, tiến hành cập nhật mật khẩu mới vào SQLite
         if (db.capNhatMatKhauMoi(Common.maNhanVien, matKhauMoi)) {
-            Toast.makeText(this, "Äá»•i máº­t kháº©u thĂ nh cĂ´ng!", Toast.LENGTH_SHORT).show();
-            finish(); // ÄĂ³ng activity sau khi Ä‘á»•i máº­t kháº©u
+            Toast.makeText(this, "Đổi mật khẩu thành công!", Toast.LENGTH_SHORT).show();
+            finish(); // Đóng activity sau khi đổi mật khẩu
         } else {
-            Toast.makeText(this, "Äá»•i máº­t kháº©u tháº¥t báº¡i, vui lĂ²ng thá»­ láº¡i!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Đổi mật khẩu thất bại, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
         }
     }
 }

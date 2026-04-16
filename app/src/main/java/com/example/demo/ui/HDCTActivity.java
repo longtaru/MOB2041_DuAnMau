@@ -23,7 +23,7 @@ public class HDCTActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ListView lvSanPham = findViewById(R.id.lvSanPham);
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle("HĂ³a ÄÆ¡n Chi Tiáº¿t");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Hóa Đơn Chi Tiết");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         DatabaseHelper db = new DatabaseHelper(this);
@@ -38,5 +38,6 @@ public class HDCTActivity extends AppCompatActivity {
         return true;
     }
 }
+
 
 

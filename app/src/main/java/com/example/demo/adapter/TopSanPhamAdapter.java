@@ -54,7 +54,7 @@ public class TopSanPhamAdapter extends BaseAdapter {
         TopSanPham thongKeSanPham = list.get(position);
 
         holder.tenSanPham.setText(thongKeSanPham.getTenSanPham());
-        holder.tongSoLuong.setText("Tá»•ng sá»‘ lÆ°á»£ng: " + thongKeSanPham.getTongSoLuong());
+        holder.tongSoLuong.setText("Tổng số lượng: " + thongKeSanPham.getTongSoLuong());
 
         return convertView;
     }
